@@ -79,12 +79,29 @@ export const challenges = [
     order: 7
   },
 
-  // Final Challenge (dynamic points)
+  // Teaser screen before final challenge
+  {
+    id: 'final-teaser',
+    type: 'final-teaser',
+    question: 'Ready to complete your journey?',
+    points: 0, // No points, just transitions to final question
+    order: 8
+  },
+
+  // Final Challenge (dynamic points - awards exact remaining points)
   {
     id: 'final',
-    type: 'final',
-    question: 'Ready to complete your journey?',
-    order: 8
+    type: 'pattern',
+    question: 'Why did the astronaut break up with his girlfriend before going to space?',
+    options: [
+      'He wanted to see other planets',
+      'She was a black hole',
+      'He needed more space 🚀',
+      'He lost gravity in the relationship'
+    ],
+    correctAnswer: 'He needed more space 🚀',
+    points: 0, // This will be calculated dynamically
+    order: 9
   }
 ];
 

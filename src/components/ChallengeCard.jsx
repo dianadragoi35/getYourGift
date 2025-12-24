@@ -15,12 +15,17 @@ export function ChallengeCard({
   const renderChallenge = () => {
     switch (challenge.type) {
       case 'pattern':
+        // For the final challenge, calculate dynamic points
+        const points = challenge.id === 'final'
+          ? calculateFinalChallengePoints(currentScore)
+          : challenge.points;
+
         return (
           <PatternChallenge
             question={challenge.question}
             options={challenge.options}
             correctAnswer={challenge.correctAnswer}
-            points={challenge.points}
+            points={points}
             onComplete={onComplete}
           />
         );
@@ -47,8 +52,7 @@ export function ChallengeCard({
           />
         );
 
-      case 'final':
-        const finalPoints = calculateFinalChallengePoints(currentScore);
+      case 'final-teaser':
         return (
           <div className="final-challenge">
             <div className="challenge-question">{challenge.question}</div>
@@ -57,13 +61,10 @@ export function ChallengeCard({
             </div>
             <button
               className="final-button"
-              onClick={() => onComplete(finalPoints)}
+              onClick={() => onComplete(0)}
             >
               Complete Journey
             </button>
-            <div className="final-points-preview">
-              +{finalPoints.toLocaleString()} points
-            </div>
           </div>
         );
 
