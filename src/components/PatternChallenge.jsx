@@ -19,6 +19,12 @@ export function PatternChallenge({ question, options, correctAnswer, points, onC
       setTimeout(() => {
         onComplete(points);
       }, 1000);
+    } else {
+      // Reset feedback after showing error so user can try again
+      setTimeout(() => {
+        setShowFeedback(false);
+        setSelectedAnswer(null);
+      }, 800);
     }
   };
 
@@ -38,7 +44,7 @@ export function PatternChallenge({ question, options, correctAnswer, points, onC
                 : ''
             }`}
             onClick={() => handleSelect(option)}
-            disabled={showFeedback}
+            disabled={isCorrect}
           >
             {option}
           </button>
