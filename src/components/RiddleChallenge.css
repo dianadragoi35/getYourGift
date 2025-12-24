@@ -29,6 +29,30 @@
   font-weight: 600;
 }
 
+.hint-button {
+  width: 100%;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  background-color: rgba(245, 166, 35, 0.1);
+  border: 2px dashed var(--color-warning);
+  border-radius: var(--border-radius-md);
+  color: var(--color-warning);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hint-button:hover {
+  background-color: rgba(245, 166, 35, 0.2);
+  border-style: solid;
+  transform: translateY(-2px);
+}
+
+.hint-button:active {
+  transform: translateY(0);
+}
+
 .hint {
   padding: var(--spacing-md);
   background-color: rgba(245, 166, 35, 0.1);

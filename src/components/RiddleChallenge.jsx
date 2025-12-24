@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { validateAnswer } from '../utils/gameLogic.js';
 import './RiddleChallenge.css';
 
-export function RiddleChallenge({ question, correctAnswer, points, onComplete }) {
+export function RiddleChallenge({ question, correctAnswer, hint, points, onComplete }) {
   const [userAnswer, setUserAnswer] = useState('');
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [attempts, setAttempts] = useState(0);
+  const [showHint, setShowHint] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +19,6 @@ export function RiddleChallenge({ question, correctAnswer, points, onComplete })
 
     setIsCorrect(correct);
     setShowFeedback(true);
-    setAttempts(attempts + 1);
 
     if (correct) {
       // Delay to show success message, then complete
@@ -34,8 +33,6 @@ export function RiddleChallenge({ question, correctAnswer, points, onComplete })
       }, 2000);
     }
   };
-
-  const showHint = attempts >= 2 && !isCorrect;
 
   return (
     <div className="riddle-challenge">
@@ -61,9 +58,18 @@ export function RiddleChallenge({ question, correctAnswer, points, onComplete })
         </button>
       </form>
 
-      {showHint && (
+      {hint && !showHint && !isCorrect && (
+        <button
+          className="hint-button"
+          onClick={() => setShowHint(true)}
+        >
+          💡 Need a hint?
+        </button>
+      )}
+
+      {showHint && hint && (
         <div className="hint">
-          Hint: The answer starts with "{correctAnswer.charAt(0).toUpperCase()}"
+          {hint}
         </div>
       )}
 

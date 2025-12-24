@@ -20,6 +20,7 @@ export const challenges = [
     type: 'riddle',
     question: 'I go up but never come down. What am I?',
     correctAnswer: 'age',
+    hint: 'Think about something that increases with time and can never decrease.',
     points: 1500,
     order: 2
   },
@@ -41,6 +42,7 @@ export const challenges = [
     type: 'riddle',
     question: 'What has keys but no locks, space but no room, and you can enter but not go inside?',
     correctAnswer: 'keyboard',
+    hint: 'This is a device you use to type on your computer.',
     points: 1200,
     order: 4
   },
@@ -62,6 +64,7 @@ export const challenges = [
     type: 'riddle',
     question: 'The more you take, the more you leave behind. What am I?',
     correctAnswer: 'steps',
+    hint: 'Think about walking or moving forward.',
     points: 1400,
     order: 6
   },

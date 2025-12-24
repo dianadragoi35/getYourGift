@@ -30,6 +30,7 @@ export function ChallengeCard({
           <RiddleChallenge
             question={challenge.question}
             correctAnswer={challenge.correctAnswer}
+            hint={challenge.hint}
             points={challenge.points}
             onComplete={onComplete}
           />
