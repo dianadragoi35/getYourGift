@@ -17,7 +17,7 @@ export const GAME_CONFIG = {
     { text: "Meters.", delay: 1500 },
     { text: "That's the altitude of your jump.", delay: 3000 },
     { text: "You've reached official superhero altitude. 🦸‍♂️", delay: 4500 },
-    { text: "You just unlocked your gift! 🎁", delay: 6000 },
+    { text: "You just unlocked your gift! 🎁", delay: 7500 },
   ],
 
   // Final personal message (shown after reveal)
