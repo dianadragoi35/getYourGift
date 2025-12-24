@@ -28,6 +28,11 @@ export function RiskButton({ currentScore, remainingChallenges, usesRemaining, o
     }, 2500);
   };
 
+  const handlePlaySafe = () => {
+    // Skip the risk, award 0 points
+    onComplete(0);
+  };
+
   // Check if risk button can be used safely
   const constrainedPoints = getConstrainedRiskPoints(currentScore, remainingChallenges);
   const isDisabled = usesRemaining <= 0 || constrainedPoints === null || isRevealing;
@@ -43,13 +48,22 @@ export function RiskButton({ currentScore, remainingChallenges, usesRemaining, o
       </div>
 
       {!isRevealing ? (
-        <button
-          className="risk-button"
-          onClick={handleClick}
-          disabled={isDisabled}
-        >
-          {usesRemaining > 0 ? 'Take a Risk?' : 'Already Used'}
-        </button>
+        <div className="risk-button-group">
+          <button
+            className="risk-button"
+            onClick={handleClick}
+            disabled={isDisabled}
+          >
+            {usesRemaining > 0 ? 'Take a Risk' : 'Already Used'}
+          </button>
+          <button
+            className="play-safe-button"
+            onClick={handlePlaySafe}
+            disabled={isRevealing}
+          >
+            Play Safe
+          </button>
+        </div>
       ) : (
         <div className="risk-reveal">
           <div className="reveal-animation">

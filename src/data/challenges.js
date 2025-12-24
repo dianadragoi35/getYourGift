@@ -25,6 +25,16 @@ export const challenges = [
     order: 2
   },
 
+  // Risk Button Challenge
+  {
+    id: 'risk-1',
+    type: 'risk',
+    question: 'Take a risk?',
+    minPoints: 500,
+    maxPoints: 2500,
+    order: 3
+  },
+
   // Pattern Challenge 2
   {
     id: 'pattern-2',
@@ -33,7 +43,7 @@ export const challenges = [
     options: ['H', 'I', 'J'],
     correctAnswer: 'I',
     points: 1800,
-    order: 3
+    order: 4
   },
 
   // Riddle Challenge 2
@@ -44,7 +54,7 @@ export const challenges = [
     correctAnswer: 'keyboard',
     hint: 'This is a device you use to type on your computer.',
     points: 1200,
-    order: 4
+    order: 5
   },
 
   // Pattern Challenge 3
@@ -55,7 +65,7 @@ export const challenges = [
     options: ['11', '13', '15'],
     correctAnswer: '13',
     points: 1600,
-    order: 5
+    order: 6
   },
 
   // Riddle Challenge 3
@@ -66,16 +76,6 @@ export const challenges = [
     correctAnswer: 'steps',
     hint: 'Think about walking or moving forward.',
     points: 1400,
-    order: 6
-  },
-
-  // Risk Button Challenge
-  {
-    id: 'risk-1',
-    type: 'risk',
-    question: 'Take a risk?',
-    minPoints: 500,
-    maxPoints: 2500,
     order: 7
   },
 
