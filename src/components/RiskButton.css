@@ -1,0 +1,118 @@
+.risk-button-container {
+  width: 100%;
+  text-align: center;
+}
+
+.risk-description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.risk-button {
+  padding: var(--spacing-xl) var(--spacing-xxl);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-risk), #b565ff);
+  border: none;
+  box-shadow: 0 4px 15px rgba(144, 19, 254, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.risk-button:not(:disabled) {
+  animation: pulse 2s infinite;
+}
+
+.risk-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #b565ff, var(--color-risk));
+  box-shadow: 0 6px 20px rgba(144, 19, 254, 0.4);
+}
+
+.risk-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+.risk-info {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.risk-reveal {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+.reveal-animation {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.reveal-text {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.reveal-points {
+  font-size: var(--font-size-xxxl);
+  font-weight: 900;
+  color: var(--color-risk);
+  margin: var(--spacing-md) 0;
+  animation: scaleIn 0.5s ease-out 0.3s both;
+}
+
+.reveal-subtext {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .reveal-points {
+    font-size: 4rem;
+  }
+}

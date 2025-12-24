@@ -1,0 +1,99 @@
+.pattern-challenge {
+  width: 100%;
+}
+
+.challenge-question {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.pattern-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.pattern-option {
+  width: 100%;
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.pattern-option:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.pattern-option.correct {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+.pattern-option.incorrect {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: white;
+  animation: shake 0.3s ease;
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  animation: fadeIn var(--transition-base);
+}
+
+.feedback.success {
+  background-color: rgba(126, 211, 33, 0.1);
+  color: var(--color-success);
+  border: 2px solid var(--color-success);
+}
+
+.feedback.error {
+  background-color: rgba(208, 2, 27, 0.1);
+  color: var(--color-danger);
+  border: 2px solid var(--color-danger);
+}
+
+.feedback-icon {
+  font-size: var(--font-size-xl);
+}
+
+.feedback-text {
+  font-size: var(--font-size-base);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@media (min-width: 768px) {
+  .pattern-options {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .pattern-option {
+    flex: 1;
+    min-width: 150px;
+  }
+}
