@@ -42,17 +42,11 @@ export function FinalReveal({ onReset }) {
         {showGiftCard && (
           <div className="gift-card-container fade-in">
             <div className="gift-card-frame">
-              <div className="gift-card-title">Your Gift</div>
-              <div className="gift-card-icon">🪂</div>
-              <div className="gift-card-text">Skydiving Experience</div>
-              <a
-                href={GAME_CONFIG.GIFT_CARD_PATH}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gift-card-link"
-              >
-                View Gift Card
-              </a>
+              <img
+                src={GAME_CONFIG.GIFT_CARD_PATH}
+                alt="Skydiving Gift Card"
+                className="gift-card-image"
+              />
             </div>
           </div>
         )}

@@ -21,8 +21,8 @@ export const GAME_CONFIG = {
   // Final personal message (shown after reveal)
   FINAL_MESSAGE: "Your skydiving adventure awaits!",
 
-  // Gift card file path (in public folder)
-  GIFT_CARD_PATH: "/skydiving-gift-card.pdf",
+  // Gift card image path
+  GIFT_CARD_PATH: "/gift_final.png",
 
   // LocalStorage key for game state
   STORAGE_KEY: "reach13000_gameState",
