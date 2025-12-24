@@ -7,6 +7,15 @@ export function FinalReveal({ onReset }) {
   const [showGiftCard, setShowGiftCard] = useState(false);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = GAME_CONFIG.GIFT_CARD_PATH;
+    link.download = 'skydiving-gift-card.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     // Sequentially reveal messages
     GAME_CONFIG.REVEAL_MESSAGES.forEach((message, index) => {
@@ -48,6 +57,12 @@ export function FinalReveal({ onReset }) {
                 className="gift-card-image"
               />
             </div>
+            <button
+              className="download-button"
+              onClick={handleDownload}
+            >
+              Download Your Gift
+            </button>
           </div>
         )}
 
