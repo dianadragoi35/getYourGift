@@ -18,13 +18,11 @@ export const GAME_CONFIG = {
     { text: "That's the altitude of your jump.", delay: 3000 },
     { text: "You've reached official superhero altitude. 🦸‍♂️", delay: 4500 },
     { text: "You just unlocked your gift! 🎁", delay: 7500 },
+    { text: "Tandem Skydive", delay: 9000 },
   ],
 
   // Final personal message (shown after reveal)
   FINAL_MESSAGE: "Your skydiving adventure awaits!",
-
-  // Gift card image path
-  GIFT_CARD_PATH: "/gift_final.png",
 
   // LocalStorage key for game state
   STORAGE_KEY: "reach13000_gameState",

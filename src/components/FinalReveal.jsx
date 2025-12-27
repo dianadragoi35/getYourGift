@@ -4,17 +4,8 @@ import './FinalReveal.css';
 
 export function FinalReveal({ onReset }) {
   const [visibleMessages, setVisibleMessages] = useState([]);
-  const [showGiftCard, setShowGiftCard] = useState(false);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
-
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = GAME_CONFIG.GIFT_CARD_PATH;
-    link.download = 'skydiving-gift-card.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     // Sequentially reveal messages
@@ -24,21 +15,33 @@ export function FinalReveal({ onReset }) {
       }, message.delay);
     });
 
-    // Show gift card after all messages
-    const lastMessage = GAME_CONFIG.REVEAL_MESSAGES[GAME_CONFIG.REVEAL_MESSAGES.length - 1];
-    const giftCardDelay = lastMessage.delay + 2000;
+    // Trigger confetti when "Tandem Skydive" message appears (second to last message)
+    const tandemMessage = GAME_CONFIG.REVEAL_MESSAGES[GAME_CONFIG.REVEAL_MESSAGES.length - 1];
     setTimeout(() => {
-      setShowGiftCard(true);
-    }, giftCardDelay);
+      setShowConfetti(true);
+    }, tandemMessage.delay);
 
-    // Show final message
+    // Show final message after all reveal messages
+    const lastMessage = GAME_CONFIG.REVEAL_MESSAGES[GAME_CONFIG.REVEAL_MESSAGES.length - 1];
+    const finalMessageDelay = lastMessage.delay + 2000;
     setTimeout(() => {
       setShowFinalMessage(true);
-    }, giftCardDelay + 1000);
+    }, finalMessageDelay);
   }, []);
 
   return (
     <div className="final-reveal">
+      {showConfetti && (
+        <div className="confetti-container">
+          {[...Array(50)].map((_, i) => (
+            <div key={i} className="confetti" style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              backgroundColor: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7', '#a29bfe'][Math.floor(Math.random() * 6)]
+            }}></div>
+          ))}
+        </div>
+      )}
       <div className="reveal-container">
         <div className="reveal-messages">
           {visibleMessages.map((message, index) => (
@@ -47,24 +50,6 @@ export function FinalReveal({ onReset }) {
             </div>
           ))}
         </div>
-
-        {showGiftCard && (
-          <div className="gift-card-container fade-in">
-            <div className="gift-card-frame">
-              <img
-                src={GAME_CONFIG.GIFT_CARD_PATH}
-                alt="Skydiving Gift Card"
-                className="gift-card-image"
-              />
-            </div>
-            <button
-              className="download-button"
-              onClick={handleDownload}
-            >
-              Download Your Gift
-            </button>
-          </div>
-        )}
 
         {showFinalMessage && (
           <div className="final-message fade-in">
